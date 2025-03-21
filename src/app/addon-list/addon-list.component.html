@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col sm-6">
+      <ul class="list-group">
+        <li
+          #selected
+          class="list-group-item"
+          *ngFor="let addon of addons()"
+          (click)="selectAddons(addon)"
+        >
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            style="border-width: 2px; border-style: double"
+            (change)="getTotal($event, addon)"
+          />
+          <label class="form-check-label" style="margin-left: 10px">
+            {{ addon.name }}
+          </label>
+          <button
+            class="btn btn-danger"
+            (click)="removeAddon(addon.id)"
+            style="display: none"
+          >
+            X
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="col sm-6">
+      <img
+        width="200"
+        height="150"
+        src="../../assets/images/Fast-Food-Restaurants.jpg"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm6">
+      <p><strong>Total Price:</strong> ${{ calculatedPrice }}</p>
+    </div>
+  </div>
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <div>
+    <button class="btn btn-info" (click)="addAddons()">Add</button>
+  </div>
+</div>

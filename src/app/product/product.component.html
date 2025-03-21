@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col sm-6">
+      <div *ngIf="product">
+        <h3>Product Details</h3>
+        <p><strong>ID:</strong> {{ product.id }}</p>
+        <p><strong>Name:</strong> {{ product.name }}</p>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <p><strong>Selling Price:</strong> {{ product.sellingprice }}</p>
+      </div>
+    </div>
+    <div class="col sm6">
+      <button (click)="addToCart(product)">Add Item</button>
+      <button (click)="removeItem(product)">Remove Item</button>
+      <pre></pre>
+      <app-product-cart
+        [cart]="cartitems"
+        [divShow]="ShowDiv"
+        [cartTotal]="CartTotal"
+      ></app-product-cart>
+    </div>
+  </div>
+  <!-- <div>
+    <ng-content></ng-content>
+  </div> -->
+</div>

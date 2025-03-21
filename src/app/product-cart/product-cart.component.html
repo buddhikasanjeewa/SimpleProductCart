@@ -1,0 +1,32 @@
+<div class="cart">
+  <h2>Product Cart</h2>
+  <div *ngFor="let item of cart">
+    <p>{{ item.name }} - ${{ item.sellingprice }}</p>
+  </div>
+</div>
+
+<div class="accordion" id="accordionExample" *ngIf="divShow">
+  <div class="accordion-item">
+    <h2 class="accordion-header" style="margin-left: 0px">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="false"
+        aria-controls="collapseOne"
+      >
+        Addons List
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse hide"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <app-addon-list [ProductTotal]="cartTotal"></app-addon-list>
+      </div>
+    </div>
+  </div>
+</div>
