@@ -4,5 +4,5 @@ export interface Product {
   description: string;
   sellingprice: number;
   checked?: boolean;
-  // imageUrl: string;
+  imageUrl: string;
 }

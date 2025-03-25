@@ -30,13 +30,15 @@ export class AddonListComponent implements OnInit {
       description: 'Cheese small',
       sellingprice: 20,
       checked: false,
+      imageUrl: 'assets/cheese.jpg',
     },
     {
       id: 2,
-      name: 'Mayons',
-      description: 'Mayons',
+      name: 'Mayonnaise',
+      description: 'Mayonnaise',
       sellingprice: 15,
       checked: false,
+      imageUrl: 'assets/mayonnaise.jpg',
     },
     {
       id: 3,
@@ -44,6 +46,7 @@ export class AddonListComponent implements OnInit {
       description: 'Souce',
       sellingprice: 20,
       checked: false,
+      imageUrl: 'assets/souce.jpg',
     },
     {
       id: 4,
@@ -51,13 +54,23 @@ export class AddonListComponent implements OnInit {
       description: 'Eggs',
       sellingprice: 15,
       checked: false,
+      imageUrl: 'assets/eggs.jpg',
+    },
+    {
+      id: 4,
+      name: 'Pepper',
+      description: 'Pepper',
+      sellingprice: 10,
+      checked: false,
+      imageUrl: 'assets/pepper.jpg',
     },
     {
       id: 4,
       name: 'Garlic',
-      description: 'Garlic',
-      sellingprice: 10,
+      description: 'Garlic Cream',
+      sellingprice: 12,
       checked: false,
+      imageUrl: 'assets/garlic.jpg',
     },
   ]);
   selected: any;
@@ -90,6 +103,7 @@ export class AddonListComponent implements OnInit {
           name: 'French Fries',
           description: 'French Fries',
           sellingprice: 12,
+          imageUrl: 'assets/frenchfries.jpg',
         },
       ]);
     }

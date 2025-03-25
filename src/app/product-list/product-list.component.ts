@@ -48,7 +48,6 @@ export class ProductListComponent implements OnChanges {
   AddAddons() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    debugger;
     if (changes['products']) {
       console.log('Product list changed:', changes['products'].currentValue);
     }

@@ -21,7 +21,6 @@ export class ProductCartComponent implements OnChanges {
   @Input() divShow: any;
   @Input() cartTotal?: number;
   ngOnChanges(changes: SimpleChanges): void {
-    debugger;
     if (changes['cart']) {
       console.log('Cart updated:', changes['cart'].currentValue);
     }

@@ -61,7 +61,6 @@ export class ProductComponent
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    debugger;
     if (changes['cart']) {
       console.log('Cart updated:', changes['cart'].currentValue);
     }
