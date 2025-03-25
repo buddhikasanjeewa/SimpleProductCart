@@ -10,11 +10,12 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Product } from '../Model/product';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-addon-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './addon-list.component.html',
   styleUrl: './addon-list.component.css',
 })
@@ -23,13 +24,44 @@ export class AddonListComponent implements OnInit {
   calculatedPrice: number = 0.0;
   @Input() ProductTotal?: number;
   addons = signal<Product[]>([
-    { id: 1, name: 'Cheese', description: 'Cheese small', sellingprice: 20 },
-    { id: 2, name: 'Mayons', description: 'Mayons', sellingprice: 15 },
-    { id: 3, name: 'Souce', description: 'Souce', sellingprice: 20 },
-    { id: 4, name: 'Eggs', description: 'Eggs', sellingprice: 15 },
-    { id: 4, name: 'Garlic', description: 'Garlic', sellingprice: 10 },
+    {
+      id: 1,
+      name: 'Cheese',
+      description: 'Cheese small',
+      sellingprice: 20,
+      checked: false,
+    },
+    {
+      id: 2,
+      name: 'Mayons',
+      description: 'Mayons',
+      sellingprice: 15,
+      checked: false,
+    },
+    {
+      id: 3,
+      name: 'Souce',
+      description: 'Souce',
+      sellingprice: 20,
+      checked: false,
+    },
+    {
+      id: 4,
+      name: 'Eggs',
+      description: 'Eggs',
+      sellingprice: 15,
+      checked: false,
+    },
+    {
+      id: 4,
+      name: 'Garlic',
+      description: 'Garlic',
+      sellingprice: 10,
+      checked: false,
+    },
   ]);
   selected: any;
+
   constructor() {
     this.selected = this.selectAddons;
   }
@@ -50,27 +82,21 @@ export class AddonListComponent implements OnInit {
   }
 
   addAddons() {
-    this.addons.set([
-      ...this.addons(),
-      {
-        id: this.addons().length + 1,
-        name: 'French Fries',
-        description: 'French Fries',
-        sellingprice: 12,
-      },
-    ]);
+    if (!this.addons().some((addon) => addon.name === 'French Fries')) {
+      this.addons.set([
+        ...this.addons(),
+        {
+          id: this.addons().length + 1,
+          name: 'French Fries',
+          description: 'French Fries',
+          sellingprice: 12,
+        },
+      ]);
+    }
   }
-
-  // Method to remove a product
-  removeAddon(id: number) {
-    // if ($event.target) {
-    //   //this.addons.update((addons) => addons.filter((p) => p.id !== p.));
-    //   const target = $event.target as HTMLElement;
-    //   this.addons.update((addons) =>
-    //     addons.filter((p) => p.id !== Number(target.id))
-    //   );
-    // }
-    debugger;
-    this.addons.update((addons) => addons.filter((p) => p.id !== Number(id)));
+  clearAll() {
+    this.addons.update((checkboxes) =>
+      checkboxes.map((cb) => ({ ...cb, checked: false }))
+    );
   }
 }
