@@ -9,12 +9,14 @@
         (click)="selectProducts(product)"
       >
         <div class="col sm-6">
-          <a href="#">
-            {{ product.name }}
-          </a>
-        </div>
-        <div class="col sm-6">
-          <img src="{{ product.imageUrl }}" width="75" height="50" />
+          <span>
+            <a href="#">
+              {{ product.name }}
+            </a>
+          </span>
+          <span>
+            <img src="{{ product.imageUrl }}" width="75" height="50" />
+          </span>
         </div>
       </li>
     </div>

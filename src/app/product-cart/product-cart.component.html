@@ -25,7 +25,10 @@
       data-bs-parent="#accordionExample"
     >
       <div class="accordion-body">
-        <app-addon-list [ProductTotal]="cartTotal"></app-addon-list>
+        <app-addon-list
+          [ProductTotal]="cartTotal"
+          [OrignalProductTotal]="cartTotal"
+        ></app-addon-list>
       </div>
     </div>
   </div>

@@ -23,6 +23,7 @@ export class AddonListComponent implements OnInit {
   selectedAddon?: Product;
   calculatedPrice: number = 0.0;
   @Input() ProductTotal?: number;
+  @Input() OrignalProductTotal?: number;
   addons = signal<Product[]>([
     {
       id: 1,
@@ -30,7 +31,7 @@ export class AddonListComponent implements OnInit {
       description: 'Cheese small',
       sellingprice: 20,
       checked: false,
-      imageUrl: 'assets/cheese.jpg',
+      imageUrl: '../../assets/images/cheese.jpg',
     },
     {
       id: 2,
@@ -38,7 +39,7 @@ export class AddonListComponent implements OnInit {
       description: 'Mayonnaise',
       sellingprice: 15,
       checked: false,
-      imageUrl: 'assets/mayonnaise.jpg',
+      imageUrl: '../../assets/images/mayonaise.jpg',
     },
     {
       id: 3,
@@ -46,7 +47,7 @@ export class AddonListComponent implements OnInit {
       description: 'Souce',
       sellingprice: 20,
       checked: false,
-      imageUrl: 'assets/souce.jpg',
+      imageUrl: '../../assets/images/souce.avif',
     },
     {
       id: 4,
@@ -54,7 +55,7 @@ export class AddonListComponent implements OnInit {
       description: 'Eggs',
       sellingprice: 15,
       checked: false,
-      imageUrl: 'assets/eggs.jpg',
+      imageUrl: '../../assets/images/eggs.jpg',
     },
     {
       id: 4,
@@ -62,7 +63,7 @@ export class AddonListComponent implements OnInit {
       description: 'Pepper',
       sellingprice: 10,
       checked: false,
-      imageUrl: 'assets/pepper.jpg',
+      imageUrl: '../../assets/images/pepper.jpg',
     },
     {
       id: 4,
@@ -70,7 +71,7 @@ export class AddonListComponent implements OnInit {
       description: 'Garlic Cream',
       sellingprice: 12,
       checked: false,
-      imageUrl: 'assets/garlic.jpg',
+      imageUrl: '../../assets/images/garlic.jpg',
     },
   ]);
   selected: any;
@@ -103,7 +104,7 @@ export class AddonListComponent implements OnInit {
           name: 'French Fries',
           description: 'French Fries',
           sellingprice: 12,
-          imageUrl: 'assets/frenchfries.jpg',
+          imageUrl: '../../assets/images/frenchfries.jpg',
         },
       ]);
     }
@@ -112,5 +113,6 @@ export class AddonListComponent implements OnInit {
     this.addons.update((checkboxes) =>
       checkboxes.map((cb) => ({ ...cb, checked: false }))
     );
+    this.ProductTotal = this.OrignalProductTotal;
   }
 }
