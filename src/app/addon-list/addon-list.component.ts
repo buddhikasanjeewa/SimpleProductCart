@@ -113,6 +113,7 @@ export class AddonListComponent implements OnInit {
     this.addons.update((checkboxes) =>
       checkboxes.map((cb) => ({ ...cb, checked: false }))
     );
-    this.ProductTotal = this.OrignalProductTotal;
+    debugger;
+    this.calculatedPrice = this.OrignalProductTotal ?? 0;
   }
 }
