@@ -8,11 +8,12 @@ import {
 } from '@angular/core';
 import { Product } from '../Model/product';
 import { AddonListComponent } from '../addon-list/addon-list.component';
+import { DesertListComponent } from '../desert-list/desert-list.component';
 
 @Component({
   selector: 'app-product-cart',
   standalone: true,
-  imports: [CommonModule, AddonListComponent],
+  imports: [CommonModule, AddonListComponent, DesertListComponent],
   templateUrl: './product-cart.component.html',
   styleUrl: './product-cart.component.css',
 })

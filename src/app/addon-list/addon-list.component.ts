@@ -11,11 +11,12 @@ import {
 } from '@angular/core';
 import { Product } from '../Model/product';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddonsComponent } from '../addons/addons.component';
 
 @Component({
   selector: 'app-addon-list',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, AddonsComponent],
   templateUrl: './addon-list.component.html',
   styleUrl: './addon-list.component.css',
 })
@@ -58,7 +59,7 @@ export class AddonListComponent implements OnInit {
       imageUrl: '../../assets/images/eggs.jpg',
     },
     {
-      id: 4,
+      id: 5,
       name: 'Pepper',
       description: 'Pepper',
       sellingprice: 10,
@@ -66,7 +67,7 @@ export class AddonListComponent implements OnInit {
       imageUrl: '../../assets/images/pepper.jpg',
     },
     {
-      id: 4,
+      id: 6,
       name: 'Garlic',
       description: 'Garlic Cream',
       sellingprice: 12,
@@ -95,6 +96,25 @@ export class AddonListComponent implements OnInit {
     this.selectedAddon = { ...addon };
   }
 
+  removeAddon() {
+    debugger;
+    if (this.addons().some((addon) => addon.name === 'French Fries')) {
+      const productToRemove = this.addons().find(
+        (addon) => addon.id === this.addons().length
+      );
+      if (productToRemove) {
+        // if (productToRemove.checked) {
+        //   this.calculatedPrice -= productToRemove.sellingprice;
+        //   this.ProductTotal = this.calculatedPrice;
+        // }
+        this.calculatedPrice = this.OrignalProductTotal ?? 0;
+        this.ProductTotal = this.OrignalProductTotal ?? 0;
+        this.addons.set(
+          this.addons().filter((addon) => addon.id !== this.addons().length)
+        );
+      }
+    }
+  }
   addAddons() {
     if (!this.addons().some((addon) => addon.name === 'French Fries')) {
       this.addons.set([
@@ -115,5 +135,6 @@ export class AddonListComponent implements OnInit {
     );
     debugger;
     this.calculatedPrice = this.OrignalProductTotal ?? 0;
+    this.ProductTotal = this.OrignalProductTotal ?? 0;
   }
 }

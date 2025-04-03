@@ -11,20 +11,24 @@
           <div class="col sm-2">
             <span>
               <input
-                class="form-check-input"
+                class="form-check-input doubleborder"
                 type="checkbox"
                 value=""
                 [(ngModel)]="addon.checked"
-                style="border-width: 2px; border-style: double"
                 (change)="getTotal($event, addon)"
               />
 
-              <label class="form-check-label" style="margin-left: 10px">
+              <label class="form-check-label marginset">
                 {{ addon.name }}
               </label>
             </span>
             <span>
               <img width="50" height="50" src="{{ addon.imageUrl }}" />
+            </span>
+            <span>
+              <label class="form-check-label marginleft">
+                {{ addon.description }}
+              </label>
             </span>
           </div>
         </li>
@@ -48,6 +52,7 @@
   </div>
   <div>
     <button class="btn btn-info" (click)="addAddons()">Add</button>
+    <button class="btn btn-danger" (click)="removeAddon()">Remove</button>
     <button class="btn btn-warning" (click)="clearAll()">Clear All</button>
   </div>
 </div>

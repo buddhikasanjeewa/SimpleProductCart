@@ -28,7 +28,31 @@
         <app-addon-list
           [ProductTotal]="cartTotal"
           [OrignalProductTotal]="cartTotal"
-        ></app-addon-list>
+        >
+        </app-addon-list>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" style="margin-left: 0px">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseTwo"
+        aria-expanded="false"
+        aria-controls="collapseTwo"
+      >
+        Deserts List
+      </button>
+    </h2>
+    <div
+      id="collapseTwo"
+      class="accordion-collapse collapse hide"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <app-desert-list [ProductTotal]="cartTotal"></app-desert-list>
       </div>
     </div>
   </div>

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <ul class="list-group">
+      <li
+        #selected
+        class="list-group-item"
+        *ngFor="let desert of deserts()"
+        (click)="selectDeserts(desert)"
+      >
+        <div class="row">
+          <div class="col sm-2">
+            <input
+              class="form-check-input doubleborder"
+              type="checkbox"
+              value=""
+              [(ngModel)]="desert.checked"
+            />
+
+            <label class="form-check-label marginset">
+              {{ desert.name }}
+            </label>
+          </div>
+          <div class="col sm-3">
+            <img width="50" height="50" src="{{ desert.imageUrl }}" />
+          </div>
+          <div class="col sm-3">
+            <label class="form-check-label marginleft">
+              {{ desert.description }}
+            </label>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- <div class="col sm-6">
+        <img
+          width="200"
+          height="150"
+          src="../../assets/images/Fast-Food-Restaurants.jpg"
+        />
+      </div> -->
+  </div>
+  <div class="row">
+    <div class="col-sm6">
+      <p><strong>Total Price:</strong> ${{ calculatedPrice }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <ng-content></ng-content>
+  </div>
+  <div class="row">
+    <button class="btn btn-info" (click)="addDesert()">Add</button>
+    <button class="btn btn-warning" (click)="removeDesert()">Remove</button>
+    <button class="btn btn-warning" (click)="clearAll()">Clear All</button>
+  </div>
+</div>
