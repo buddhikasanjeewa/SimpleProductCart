@@ -28,6 +28,7 @@
         <app-addon-list
           [ProductTotal]="cartTotal"
           [OrignalProductTotal]="cartTotal"
+          (productTotalChange)="updateProductTotal($event)"
         >
         </app-addon-list>
       </div>
@@ -55,5 +56,10 @@
         <app-desert-list [ProductTotal]="cartTotal"></app-desert-list>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm6">
+    <p><strong>Total Price:</strong> ${{ cartTotal }}</p>
   </div>
 </div>

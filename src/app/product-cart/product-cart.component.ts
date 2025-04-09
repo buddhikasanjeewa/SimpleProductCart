@@ -4,6 +4,7 @@ import {
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { Product } from '../Model/product';
@@ -25,5 +26,8 @@ export class ProductCartComponent implements OnChanges {
     if (changes['cart']) {
       console.log('Cart updated:', changes['cart'].currentValue);
     }
+  }
+  updateProductTotal(newTotal: number) {
+    this.cartTotal = newTotal;
   }
 }

@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   computed,
+  EventEmitter,
   Input,
   input,
   OnChanges,
   OnInit,
+  Output,
   signal,
   SimpleChanges,
 } from '@angular/core';
@@ -21,8 +23,11 @@ import { AddonsComponent } from '../addons/addons.component';
   styleUrl: './addon-list.component.css',
 })
 export class AddonListComponent implements OnInit {
+  @Output() productTotalChange = new EventEmitter<number>();
+
   selectedAddon?: Product;
   calculatedPrice: number = 0.0;
+
   @Input() ProductTotal?: number;
   @Input() OrignalProductTotal?: number;
   addons = signal<Product[]>([
@@ -80,8 +85,9 @@ export class AddonListComponent implements OnInit {
   constructor() {
     this.selected = this.selectAddons;
   }
+
   ngOnInit(): void {
-    this.calculatedPrice = this.ProductTotal ?? 0;
+    // this.OrignalProductTotal = this.ProductTotal ?? 0;
   }
   getTotal($event: Event, addon: Product) {
     this.calculatedPrice = this.ProductTotal ?? 0;
@@ -91,6 +97,9 @@ export class AddonListComponent implements OnInit {
       this.calculatedPrice -= addon.sellingprice;
     }
     this.ProductTotal = this.calculatedPrice;
+
+    // Emit the updated ProductTotal to the parent
+    this.productTotalChange.emit(this.ProductTotal);
   }
   selectAddons(addon: Product) {
     this.selectedAddon = { ...addon };
@@ -130,11 +139,20 @@ export class AddonListComponent implements OnInit {
     }
   }
   clearAll() {
+    debugger;
+    // Deduct the total price of all selected addons
+
+    const totalDeduction = this.addons()
+      .filter((addon) => addon.checked)
+      .reduce((sum, addon) => sum + addon.sellingprice, 0);
+
+    this.calculatedPrice = (this.ProductTotal ?? 0) - totalDeduction;
+    this.ProductTotal = this.calculatedPrice;
+
+    // Emit the updated ProductTotal to the parent
+    this.productTotalChange.emit(this.ProductTotal);
     this.addons.update((checkboxes) =>
       checkboxes.map((cb) => ({ ...cb, checked: false }))
     );
-    debugger;
-    this.calculatedPrice = this.OrignalProductTotal ?? 0;
-    this.ProductTotal = this.OrignalProductTotal ?? 0;
   }
 }

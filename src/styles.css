@@ -9,6 +9,9 @@
 .marginset{
   margin-left: 10px
 }
+.rightalgin{
+  float: right;
+}
 
 .marginleft{
   margin-left: 10px; font-size: 9px

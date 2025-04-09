@@ -14,6 +14,7 @@
               type="checkbox"
               value=""
               [(ngModel)]="desert.checked"
+              (change)="getTotal($event, desert)"
             />
 
             <label class="form-check-label marginset">
@@ -49,8 +50,10 @@
     <ng-content></ng-content>
   </div>
   <div class="row">
-    <button class="btn btn-info" (click)="addDesert()">Add</button>
-    <button class="btn btn-warning" (click)="removeDesert()">Remove</button>
-    <button class="btn btn-warning" (click)="clearAll()">Clear All</button>
+    <div class="col-sm-6">
+      <button class="btn btn-info" (click)="addDesert()">Add</button>
+      <button class="btn btn-danger" (click)="removeDesert()">Remove</button>
+      <button class="btn btn-warning" (click)="clearAll()">Clear All</button>
+    </div>
   </div>
 </div>
