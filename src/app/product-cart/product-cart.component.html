@@ -53,7 +53,11 @@
       data-bs-parent="#accordionExample"
     >
       <div class="accordion-body">
-        <app-desert-list [ProductTotal]="cartTotal"></app-desert-list>
+        <app-desert-list
+          [ProductTotal]="cartTotal"
+          [OrignalProductTotal]="cartTotal"
+          (productTotalChange)="updateProductTotal($event)"
+        ></app-desert-list>
       </div>
     </div>
   </div>

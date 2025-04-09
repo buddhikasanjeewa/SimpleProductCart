@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  signal,
+} from '@angular/core';
 import { Product } from '../Model/product';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +18,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './desert-list.component.css',
 })
 export class DesertListComponent implements OnInit {
+  @Output() productTotalChange = new EventEmitter<number>();
   selectedDesert?: Product;
   @Input() ProductTotal?: number;
   calculatedPrice: number = 0.0;
@@ -23,6 +31,7 @@ export class DesertListComponent implements OnInit {
       this.calculatedPrice -= desert.sellingprice;
     }
     this.ProductTotal = this.calculatedPrice;
+    this.productTotalChange.emit(this.ProductTotal);
   }
   ngOnInit(): void {
     this.calculatedPrice = this.ProductTotal ?? 0;
@@ -94,9 +103,17 @@ export class DesertListComponent implements OnInit {
   }
 
   clearAll() {
+    const totalDeduction = this.deserts()
+      .filter((desert) => desert.checked)
+      .reduce((sum, desert) => sum + desert.sellingprice, 0);
+
+    this.calculatedPrice = (this.ProductTotal ?? 0) - totalDeduction;
+    this.ProductTotal = this.calculatedPrice;
+
+    // Emit the updated ProductTotal to the parent
+    this.productTotalChange.emit(this.ProductTotal);
     this.deserts.update((checkboxes) =>
       checkboxes.map((cb) => ({ ...cb, checked: false }))
     );
-    this.calculatedPrice = this.ProductTotal ?? 0;
   }
 }
