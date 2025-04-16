@@ -61,6 +61,33 @@
       </div>
     </div>
   </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" style="margin-left: 0px">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseThree"
+        aria-expanded="false"
+        aria-controls="collapseThree"
+      >
+        Drinks List
+      </button>
+    </h2>
+    <div
+      id="collapseThree"
+      class="accordion-collapse collapse hide"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <app-drinklist
+          [ProductTotal]="cartTotal"
+          [OrignalProductTotal]="cartTotal"
+          (productTotalChange)="updateProductTotal($event)"
+        ></app-drinklist>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-sm6">

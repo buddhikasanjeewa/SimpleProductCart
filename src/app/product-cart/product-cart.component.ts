@@ -10,11 +10,17 @@ import {
 import { Product } from '../Model/product';
 import { AddonListComponent } from '../addon-list/addon-list.component';
 import { DesertListComponent } from '../desert-list/desert-list.component';
+import { DrinklistComponent } from '../drinklist/drinklist.component';
 
 @Component({
   selector: 'app-product-cart',
   standalone: true,
-  imports: [CommonModule, AddonListComponent, DesertListComponent],
+  imports: [
+    CommonModule,
+    AddonListComponent,
+    DesertListComponent,
+    DrinklistComponent,
+  ],
   templateUrl: './product-cart.component.html',
   styleUrl: './product-cart.component.css',
 })

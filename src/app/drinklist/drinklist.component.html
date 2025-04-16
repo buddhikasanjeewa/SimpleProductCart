@@ -4,8 +4,8 @@
       <li
         #selected
         class="list-group-item"
-        *ngFor="let desert of deserts()"
-        (click)="selectDeserts(desert)"
+        *ngFor="let drink of drinks()"
+        (click)="selectDrinks(drink)"
       >
         <div class="row">
           <div class="col sm-2">
@@ -13,20 +13,20 @@
               class="form-check-input doubleborder"
               type="checkbox"
               value=""
-              [(ngModel)]="desert.checked"
-              (change)="getTotal($event, desert)"
+              [(ngModel)]="drink.checked"
+              (change)="getTotal($event, drink)"
             />
 
             <label class="form-check-label marginset">
-              {{ desert.name }}
+              {{ drink.name }}
             </label>
           </div>
           <div class="col sm-3">
-            <img width="50" height="50" src="{{ desert.imageUrl }}" />
+            <img width="50" height="50" src="{{ drink.imageUrl }}" />
           </div>
           <div class="col sm-3">
             <label class="form-check-label marginleft">
-              $ {{ desert.sellingprice }}
+              $ {{ drink.sellingprice }}
             </label>
           </div>
         </div>
@@ -34,12 +34,12 @@
     </ul>
 
     <!-- <div class="col sm-6">
-        <img
-          width="200"
-          height="150"
-          src="../../assets/images/Fast-Food-Restaurants.jpg"
-        />
-      </div> -->
+          <img
+            width="200"
+            height="150"
+            src="../../assets/images/Fast-Food-Restaurants.jpg"
+          />
+        </div> -->
   </div>
 
   <div class="row">
@@ -47,8 +47,8 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-      <button class="btn btn-info" (click)="addDesert()">Add</button>
-      <button class="btn btn-danger" (click)="removeDesert()">Remove</button>
+      <button class="btn btn-info" (click)="addDrinks()">Add</button>
+      <button class="btn btn-danger" (click)="removeDrinks()">Remove</button>
       <button class="btn btn-warning" (click)="clearAll()">Clear All</button>
     </div>
   </div>
