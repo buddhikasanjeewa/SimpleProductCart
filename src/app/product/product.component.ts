@@ -51,7 +51,7 @@ export class ProductComponent
     if (this.cartitems.indexOf(lproduct) == -1) {
       this.cartitems.push(lproduct);
       this.ShowDiv = true;
-      this.CartTotal = lproduct.sellingprice;
+      this.CartTotal += lproduct.sellingprice;
     }
     //  this.cartItems = [...this.cartItems, { name: 'Mouse', price: 50 }];
   }

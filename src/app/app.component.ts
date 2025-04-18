@@ -12,7 +12,11 @@ import { Product } from './Model/product';
 })
 export class AppComponent {
   removeProduct() {
-    this.products.pop();
+    const exists = this.products.some((product: Product) => product.id === 4);
+
+    if (exists) {
+      this.products.pop();
+    }
   }
   addProduct() {
     const exists = this.products.some((product: Product) => product.id === 4);
